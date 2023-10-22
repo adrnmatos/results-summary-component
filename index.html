@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<!-- displays site properly based on user's device -->
+
+		<link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png" />
+
+		<title>Frontend Mentor | Results summary component</title>
+
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@500;700;800&display=swap"
+			rel="stylesheet"
+		/>
+
+		<!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+
+			:root {
+				--light-slate-blue: hsl(252, 100%, 67%);
+				--light-royal-blue: hsl(241, 81%, 54%);
+				--violet-blue: hsla(256, 72%, 46%, 1);
+				--persian-blue: hsla(241, 72%, 46%, 0);
+
+				--white: hsl(0, 0%, 100%);
+				--pale-blue: hsl(221, 100%, 96%);
+				--light-lavender: hsl(241, 100%, 89%);
+				--dark-gray-blue: hsl(224, 30%, 27%);
+
+				--light-red: hsl(0, 100%, 67%);
+				--orangey-yellow: hsl(39, 100%, 56%);
+				--green-teal: hsl(166, 100%, 37%);
+				--cobalt-blue: hsl(234, 85%, 45%);
+			}
+
+			body {
+				font-family: 'Hanken Grotesk', sans-serif;
+				font-size: 18px;
+				line-height: 1.2rem;
+				background-color: var(--white);
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				min-height: 100vh;
+			}
+
+			.container {
+				color: var(--pale-blue);
+				display: grid;
+				grid-template-columns: 100%;
+				grid-template-rows: 45% 55%;
+				min-height: 100vh;
+			}
+
+			.results {
+				grid-column: 1 / 2;
+				grid-row: 1 / 2;
+				background: linear-gradient(var(--light-slate-blue), var(--light-royal-blue));
+				padding: 5% 5%;
+				display: flex;
+				flex-direction: column;
+				justify-content: space-evenly;
+				align-items: center;
+				border-radius: 0 0 30px 30px;
+			}
+
+			.your-result {
+				font-size: 20px;
+				opacity: 0.6;
+			}
+
+			.circle {
+				background: linear-gradient(var(--violet-blue) 10%, var(--persian-blue));
+				padding-top: 20px;
+				width: 150px;
+				height: 150px;
+				border-radius: 50%;
+				display: flex;
+				flex-direction: column;
+				justify-content: space-evenly;
+				align-items: center;
+			}
+
+			.score {
+				font-size: 60px;
+				font-weight: 700;
+				text-align: center;
+			}
+
+			.amount-of {
+				text-align: center;
+				font-size: 16px;
+				opacity: 0.3;
+			}
+
+			.result-title {
+				font-size: 26px;
+				font-weight: 700;
+				padding-top: -20px;
+			}
+
+			.result-text {
+				font-size: 16px;
+				text-align: center;
+				padding: 0 10%;
+				opacity: 0.5;
+			}
+
+			.summary {
+				grid-column: 1 / 2;
+				grid-row: 2 / 3;
+				padding: 5% 5%;
+				display: flex;
+				flex-direction: column;
+				justify-content: space-between;
+				box-shadow: 0px 0px 20px 0px var(--light-lavender);
+			}
+
+			.summary-text {
+				color: var(--dark-gray-blue);
+				font-size: 20px;
+				font-weight: 700;
+			}
+
+			.summary > div {
+				height: 15%;
+				border-radius: 10px;
+				display: flex;
+				padding: 0 3%;
+				justify-content: space-between;
+				align-items: center;
+			}
+
+			.icon-text {
+				display: flex;
+				justify-content: space-evenly;
+				align-items: center;
+			}
+
+			.summary-score {
+				display: flex;
+				justify-content: space-around;
+				align-items: center;
+				min-width: 20%;
+			}
+
+			.score-text {
+				color: var(--dark-gray-blue);
+				font-weight: 700;
+			}
+
+			.total {
+				color: var(--dark-gray-blue);
+				font-weight: 700;
+				opacity: 0.3;
+			}
+
+			.reaction {
+				background-color: hsla(0, 100%, 67%, 0.1);
+				color: var(--light-red);
+			}
+
+			.memory {
+				background-color: hsla(39, 100%, 56%, 0.1);
+				color: var(--orangey-yellow);
+			}
+
+			.verbal {
+				background-color: hsla(166, 100%, 37%, 0.1);
+				color: var(--green-teal);
+			}
+
+			.visual {
+				background-color: hsla(234, 85%, 45%, 0.1);
+				color: var(--cobalt-blue);
+			}
+
+			button {
+				background-color: var(--dark-gray-blue);
+				color: var(--white);
+				height: 15%;
+				border-radius: 30px;
+				font-size: 20px;
+				font-weight: 500;
+			}
+
+			button:hover {
+				background: linear-gradient(var(--light-slate-blue), var(--light-royal-blue));
+			}
+
+			.attribution {
+				display: absolute;
+				bottom: 50px;
+				font-size: 11px;
+				text-align: center;
+			}
+			.attribution a {
+				color: hsl(228, 45%, 44%);
+			}
+
+			@media only screen and (min-width: 1440px) {
+				.container {
+					grid-template-columns: 50% 50%;
+					grid-template-rows: 100%;
+					min-height: 50vh;
+				}
+
+				.results {
+					border-radius: 30px 30px 30px 30px;
+				}
+
+				.summary {
+					grid-column: 2 / 3;
+					grid-row: 1 / 2;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<div class="results">
+				<p class="your-result">Your Result</p>
+				<div class="circle">
+					<p class="score">76</p>
+					<p class="amount-of">of 100</p>
+				</div>
+				<div class="result-title">Great</div>
+				<p class="result-text">You scored higher than 65% of the people who have taken these tests.</p>
+			</div>
+
+			<div class="summary">
+				<p class="summary-text">Summary</p>
+
+				<div class="reaction">
+					<div class="icon-text">
+						<img src="assets/images/icon-reaction.svg" alt="reaction" />
+						<p>&nbsp;Reaction</p>
+					</div>
+					<div class="summary-score">
+						<p class="score-text">80</p>
+						<p class="total">&nbsp;/ 100</p>
+					</div>
+				</div>
+
+				<div class="memory">
+					<div class="icon-text">
+						<img src="assets/images/icon-memory.svg" alt="memory" />
+						<p>&nbsp;Memory</p>
+					</div>
+					<div class="summary-score">
+						<p class="score-text">92</p>
+						<p class="total">&nbsp;/ 100</p>
+					</div>
+				</div>
+				<div class="verbal">
+					<div class="icon-text">
+						<img src="assets/images/icon-verbal.svg" alt="verbal" />
+						<p>&nbsp;Verbal</p>
+					</div>
+					<div class="summary-score">
+						<p class="score-text">61</p>
+						<p class="total">&nbsp;/ 100</p>
+					</div>
+				</div>
+				<div class="visual">
+					<div class="icon-text">
+						<img src="assets/images/icon-visual.svg" alt="visual" />
+						<p>&nbsp;Visual</p>
+					</div>
+					<div class="summary-score">
+						<p class="score-text">72</p>
+						<p class="total">&nbsp;/ 100</p>
+					</div>
+				</div>
+				<button>Continue</button>
+			</div>
+		</div>
+		<div class="attribution">
+			Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. Coded by
+			<a href="#">adrnmatos</a>.
+		</div>
+	</body>
+</html>
